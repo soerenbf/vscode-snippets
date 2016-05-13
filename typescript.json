@@ -1,0 +1,146 @@
+{
+/*
+	 // Place your snippets for TypeScript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
+	 // Example:
+	 "Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	}
+*/
+	"IMPACT ng1 module": {
+		"prefix": "ng1Module-IMPACT",
+		"body": [
+			"///<reference path='../../../references/references.ts/'>",
+			"/** ${1:Module Description}",
+			" * @author: SBF",
+			" */",
+			"",
+			"import AngularModule = require('../../global/classes/AngularModule');",
+			"",
+			"const mod = new AngularModule('ng${2:ModuleName}', []);",
+			"",
+			"export = mod;"
+		],
+		"description": "Angular 1 module IMPACT style."
+	},
+	"IMPACT ng1 service": {
+		"prefix": "ng1Service-IMPACT",
+		"body": [
+			"///<reference path='../../../../references/references.ts/'>",
+			"/** ${1:Service Description}",
+			" * @author: SBF",
+			" */",
+			"",
+			"class ${2:ServiceName}Svc {",
+			"	static id: string = ${2:ServiceName}Svc;",
+			"}",
+			"",
+			"export = ${2:ServiceName}Svc;"
+		],
+		"description": "Angular 1 service IMPACT style."
+	},
+	"IMPACT ng1 controller": {
+		"prefix": "ng1Controller-IMPACT",
+		"body": [
+			"///<reference path='../../../../references/references.ts/'>",
+			"/** ${1:Controller Description}",
+			" * @author: SBF",
+			" */",
+			"",
+			"class ${2:ControllerName}Ctrl {",
+			"	static id: string = ${2:ControllerName}Ctrl;",
+			"",
+			"	constructor(",
+			"		private ${3:dependency}: ${4:DependencyType}",
+			"	){}",
+			"}",
+			"",
+			"export = ${2:ControllerName}Ctrl;"
+		],
+		"description": "Angular 1 controller IMPACT style."
+	},
+	"IMPACT ng1 directive": {
+		"prefix": "ng1Directive-IMPACT",
+		"body": [
+			"///<reference path='../../../../references/references.ts/'>",
+			"/** ${1:Directive Description}",
+			" * @author: SBF",
+			" */",
+			"",
+			"class ${2:DirectiveName} {",
+			"	static id: string = ${2:DirectiveName};",
+			"",
+			"	public restrict = 'A';",
+			"	public scope = true;",
+			"	public link = (scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes): void => {",
+			"		${5://Link code}",
+			"	}",
+			"",
+			"	constructor(",
+			"		private ${3:dependency}: ${4:DependencyType}",
+			"	){}",
+			"}",
+			"",
+			"export = ${2:DirectiveName};"
+		],
+		"description": "Angular 1 directive IMPACT style."
+	},
+	"ng1 component": {
+		"prefix": "ng1Component",
+		"body": [
+			"(function() {",
+			"	'use strict';",
+			"",
+			"	${1:ComponentController}.$inject = [];",
+			" 	var ${1:ComponentController} = function() {",
+			"		var _this = this;",
+			"",
+			"		_this.click = () => {",
+			"			_this.onClick({input: 'click: ' +  _this.name}); //Special syntax for calling functions bound to the component by an output binding",
+			"		}",
+			"",
+			"		_this.$onChanges = (changesObj) => { //Called when one way bindings are updated.",
+			"",
+			"		}",
+			"",
+			"		_this.$onDestroy = () => { //Used for cleaning up. Useful in SPA's as content will take up memory if not handled.",
+			"",
+			"		}",
+			"	}",
+			"",
+			"	let component: angular.IComponentOptions = {",
+			"		bindings: {",
+			"			title: '@', //Used for binding direct input such as strings",
+			"			name: '<someName', //Used for one time binding (new in angular 1.5). The attribute used or input will in this case be some-name=\"\"",
+			"			price: '<',",
+			"			onClick: '&' //Used for output bindings, i.e. callbacks from parent components",
+			"		},",
+			"		controller: ${1:ComponentController},",
+			"		template: `",
+			"			<div style=\"margin-bottom: 10px;\">",
+			"				title: {{::$ctrl.title}}",
+			"				<br />",
+			"				name: {{::$ctrl.name}}",
+			"				<br />",
+			"				price: {{::$ctrl.price}}",
+			"				<br />",
+			"				<button ng-click=\"$ctrl.click()\">Click me!</button>",
+			"				<br />",
+			"			</div>",
+			"		`",
+			"	};",
+			"",
+			"	angular",
+			"		.module('app')",
+			"		.component('${2:componentName}', component);",
+			"})();"
+		],
+		"description": "Angular 1 component."
+	}
+}
